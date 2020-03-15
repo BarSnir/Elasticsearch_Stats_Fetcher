@@ -1,0 +1,23 @@
+{
+  "name": "elasticsearch_stats_fetcher",
+  "version": "1.0.0",
+  "description": "Fetcher for Elasticsearch stats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BarSnir/Elasticsearch_Stats_Fetcher.git"
+  },
+  "author": "Bar Snir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BarSnir/Elasticsearch_Stats_Fetcher/issues"
+  },
+  "homepage": "https://github.com/BarSnir/Elasticsearch_Stats_Fetcher#readme",
+  "dependencies": {
+    "elasticsearch": "^16.6.0",
+    "express": "^4.17.1"
+  }
+}
