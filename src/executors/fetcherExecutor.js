@@ -2,8 +2,12 @@ const fetcherConnector = require('../connectors/fetcherConnector');
 
 module.exports = {
     fetchNodeStats() {
-        client = fetcherConnector.getClusterConnections();
+        let client = fetcherConnector.getClusterConnections();
         return client.source.nodes.stats();
+    },
+    fetchIndicesStats() {
+        let client = fetcherConnector.getClusterConnections();
+        return client.source.indices.stats()
     },
     sendStats(){
 

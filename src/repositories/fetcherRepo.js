@@ -5,6 +5,6 @@ module.exports = {
         return fetcherExecutor.fetchNodeStats();
     },
     fetchIndexStats() {
-        return fetcherExecutor.fetchNodeStats();
+        return fetcherExecutor.fetchIndicesStats();
     }
 }

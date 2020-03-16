@@ -4,7 +4,8 @@
   "description": "Fetcher for Elasticsearch stats",
   "main": "index.js",
   "scripts": {
-    "deubg": "node --nolazy --inspect-brk=9229 ./src/index.js",
+    "stats": " node ./src/index.js",
+    "debug": "node --nolazy --inspect-brk=9229 ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
