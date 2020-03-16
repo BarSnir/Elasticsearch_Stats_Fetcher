@@ -1,0 +1,5 @@
+{
+    "hosts":{
+        "monitor-hosts": "http://localhost:9200"
+    }
+}
