@@ -1,4 +1,4 @@
-const ElasticSearch = require('@elastic/elasticsearch');
+const { Client } = require('@elastic/elasticsearch')
 const config = require('../config.json');
 
 module.exports = {
@@ -10,11 +10,11 @@ module.exports = {
         return this.client;
     },
     setClusterConnection(sourceHost) {
-        this.client.source = new ElasticSearch({
+        this.client.source = new Client({
             node: sourceHost
         });
-        this.client.target = new ElasticSearch({
-            node: config.hosts.monitor-hosts
+        this.client.target = new Client({
+            node: config.hosts.monitor_hosts
         });
     }
 }

@@ -1,5 +1,5 @@
 {
     "hosts":{
-        "monitor-hosts": "http://localhost:9200"
+        "monitor_hosts": "http://localhost:9200"
     }
 }
