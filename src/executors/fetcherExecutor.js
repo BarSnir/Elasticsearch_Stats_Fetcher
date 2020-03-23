@@ -9,7 +9,12 @@ module.exports = {
         let client = fetcherConnector.getClusterConnections();
         return client.source.indices.stats()
     },
-    sendStats(){
-
+    async sendStats(stats){
+        let client = fetcherConnector.getClusterConnections();
+        await client.target.index({
+            index: `index-g1-monitor`,
+            body: stats
+        });
+        console.log('logs sent');
     }
 }

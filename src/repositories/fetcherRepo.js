@@ -6,5 +6,8 @@ module.exports = {
     },
     fetchIndexStats() {
         return fetcherExecutor.fetchIndicesStats();
+    },
+    sendStats(stats) {
+        fetcherExecutor.sendStats(stats); 
     }
 }
