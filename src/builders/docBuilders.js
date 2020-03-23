@@ -14,24 +14,28 @@ module.exports = {
         let nodesDocs = [];
         let nodeArrKeys = Object.keys(nodesStats);
         for(let i=0; i < nodeArrKeys.length; i++){
-            let nodeKey = nodeArrKeys[i];
-            nodesDocs.push({
-                uuid: nodeArrKeys[i],
-                cluster_name: this.getNodeCluster(nodesStats[nodeKey]),
-                ip: this.getNodeIP(nodesStats[nodeKey]),
-                avg_query_time: this.getNodeAvgQueryTime(nodesStats[nodeKey])
-            })
+            nodesDocs.push(this.getNodeDocument(nodesStats, nodeArrKeys[i]))
         }
         return nodesDocs;
     },
-    getNodeCluster(nodeStats){
+    getNodeDocument(nodesStats, nodeKey){
+        return {
+            uuid: nodeKey,
+            node_name: this.getNodeName(nodesStats[nodeKey]),
+            ip: this.getNodeIP(nodesStats[nodeKey]),
+            measurements: {
+                avg_query_time: this.getNodeAvgQueryTime(nodesStats[nodeKey])
+            }
+        };
+    },
+    getNodeName(nodeStats){
         return nodeStats.name;
     },
     getNodeIP(nodeStats){
         return nodeStats.ip;
     },
     getNodeAvgQueryTime(nodeStats, nodeToken){
-        if(!this.prevStats || nodeStats){
+        if(!this.prevStats){
             return null;
         }
         let currentQueyTime = nodeStats.indices.search.query_time_in_millis;
@@ -41,9 +45,11 @@ module.exports = {
     getEmptyNodeObject() {
         return [{
             uuid: null,
-            cluster_name: null,
+            node_name: null,
             ip: null,
-            avg: 0
-        }]
+            measurements: {
+                avg_query_time: 0
+            }
+        }];
     }
 }
