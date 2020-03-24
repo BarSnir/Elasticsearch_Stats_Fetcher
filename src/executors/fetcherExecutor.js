@@ -9,11 +9,11 @@ module.exports = {
         let client = fetcherConnector.getClusterConnections();
         return client.source.indices.stats()
     },
-    async sendStats(stats){
+    async sendStats(documents){
         let client = fetcherConnector.getClusterConnections();
-        await client.target.index({
-            index: `index-g1-monitor`,
-            body: stats
+        await client.target.bulk({
+            refresh: true,
+            body: documents
         });
         console.log('logs sent');
     }

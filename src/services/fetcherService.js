@@ -6,8 +6,8 @@ module.exports = {
     async fetchStats() {
         let stats = await this.getStats();
         let documents = this.buildDocs(stats);
-        let bulk = this.buildBulk();
-        this.sendStats(document);
+        let bulk = this.buildBulk(documents);
+        this.sendStats(bulk);
     },
     async getStats() {
         let stats = {
@@ -22,7 +22,7 @@ module.exports = {
         return fetcherDocBuilder.buildDocs(stats);
     },
     buildBulk(documents){
-        return documents;
+        return fetcherDocBuilder.buildBulk(documents);
     },
     sendStats(document){
         fetcherRepo.sendStats(document); 
